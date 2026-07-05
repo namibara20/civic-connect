@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = "https://civicconnect-backend-qxeh.onrender.com";
+const API = import.meta.env.VITE_API_URL;
 
 export const improveComplaint = async (description) => {
   const response = await axios.post(
-    `${API_URL}/improve-description`,
+    `${API}/improve-description`,
     {
       description,
     }
