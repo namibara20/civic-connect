@@ -2,7 +2,7 @@ import { useState } from "react";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -22,11 +22,12 @@ function Signup() {
       const user = userCredential.user;
 
       await setDoc(doc(db, "users", user.uid), {
-        name: name,
-        email: email,
+        name,
+        email,
       });
 
       alert("Account created successfully!");
+
       navigate("/dashboard");
     } catch (error) {
       alert(error.message);
@@ -34,37 +35,87 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h1>Create Account</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-800 px-4">
 
-      <input
-        type="text"
-        placeholder="Full Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-10">
 
-      <br /><br />
+        <div className="text-center mb-8">
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+          <h1 className="text-4xl font-extrabold text-blue-700">
+            CivicConnect
+          </h1>
 
-      <br /><br />
+          <p className="text-gray-500 mt-2">
+            Create your account to start reporting civic issues.
+          </p>
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        </div>
 
-      <br /><br />
+        <div className="space-y-5">
 
-      <button onClick={handleSignup}>Create Account</button>
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">
+              Email
+            </label>
+
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">
+              Password
+            </label>
+
+            <input
+              type="password"
+              placeholder="Create a password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <button
+            onClick={handleSignup}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold transition"
+          >
+            Create Account
+          </button>
+
+        </div>
+
+        <p className="text-center text-gray-600 mt-6">
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            className="text-blue-600 font-semibold hover:underline"
+          >
+            Login
+          </Link>
+        </p>
+
+      </div>
+
     </div>
   );
 }
