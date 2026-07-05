@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReportIssue from "./pages/ReportIssue";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./auth/Signup";
+import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import IssueDetails from "./pages/IssueDetails";
