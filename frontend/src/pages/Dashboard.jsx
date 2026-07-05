@@ -256,86 +256,85 @@ function Dashboard() {
 
                    <div className="flex flex-wrap gap-2 mt-4">
 
-  <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-    📂 {report.category}
-  </span>
+                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                        📂 {report.category}
+                    </span>
 
-  <span className="font-semibold text-gray-700 self-center">
-    Priority:
-  </span>
+                    <span className="font-semibold text-gray-700 self-center">
+                        Priority:
+                    </span>
 
-  <span
-    className={`px-3 py-1 rounded-full text-white text-sm ${
-      report.priority === "High"
-        ? "bg-red-500"
-        : report.priority === "Medium"
-        ? "bg-yellow-500"
-        : "bg-green-500"
-    }`}
-  >
-    {report.priority}
-  </span>
-
-</div>
-
-                    <div className="flex justify-between items-center mt-5">
-
-            <span
-                className={`px-3 py-1 rounded-full text-white text-sm ${
-                report.status === "Resolved"
-                    ? "bg-green-600"
-                    : report.status === "In Progress"
-                    ? "bg-blue-600"
-                    : "bg-yellow-500"
-                }`}
-            >
-                {report.status}
-            </span>
-
-            <span className="font-bold text-blue-600">
-                👍 {report.upvotes || 0}
-            </span>
-
-            </div>
-
-                  </div>
-
-                  {report.createdBy === auth.currentUser.uid ? (
-
-                <button
-                    disabled
-                    className="mt-6 w-full bg-gray-400 text-white py-3 rounded-xl cursor-not-allowed"
-                >
-                    ✓ Your Complaint
-                </button>
-
-                ) : (report.votedBy || []).includes(auth.currentUser.uid) ? (
-
-                <button
-                    disabled
-                    className="mt-6 w-full bg-green-600 text-white py-3 rounded-xl cursor-not-allowed"
-                >
-                    ✓ Already Supported
-                </button>
-
-                ) : (
-                <>
-                <button
-                    onClick={() => handleUpvote(report)}
-                    className="mt-6 w-full bg-blue-100 hover:bg-blue-200 text-blue-700 py-3 rounded-xl transition font-semibold"
-                >
-                    ❤️ Support
-                </button>
-
-
-                <button
-                    onClick={() => navigate(`/complaint/${report.id}`)}
-                    className="mt-3 w-full border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white py-3 rounded-xl transition"
+                    <span
+                        className={`px-3 py-1 rounded-full text-white text-sm ${
+                        report.priority === "High"
+                            ? "bg-red-500"
+                            : report.priority === "Medium"
+                            ? "bg-yellow-500"
+                            : "bg-green-500"
+                        }`}
                     >
-                    View Details
+                        {report.priority}
+                    </span>
+
+                    </div>
+
+                                        <div className="flex justify-between items-center mt-5">
+
+                                <span
+                                    className={`px-3 py-1 rounded-full text-white text-sm ${
+                                    report.status === "Resolved"
+                                        ? "bg-green-600"
+                                        : report.status === "In Progress"
+                                        ? "bg-blue-600"
+                                        : "bg-yellow-500"
+                                    }`}
+                                >
+                                    {report.status}
+                                </span>
+
+                                <span className="font-bold text-blue-600">
+                                    👍 {report.upvotes || 0}
+                                </span>
+
+                                </div>
+
+                                    </div>
+
+                                    {report.createdBy === auth.currentUser.uid ? (
+
+                    <button
+                        disabled
+                        className="mt-6 w-full bg-gray-400 text-white py-3 rounded-xl cursor-not-allowed"
+                    >
+                        ✓ Your Complaint
                     </button>
-                    </>
-                )}
+
+                    ) : (report.votedBy || []).includes(auth.currentUser.uid) ? (
+
+                    <button
+                        disabled
+                        className="mt-6 w-full bg-green-600 text-white py-3 rounded-xl cursor-not-allowed"
+                    >
+                        ✓ Already Supported
+                    </button>
+
+                    ) : (
+
+                    <button
+                        onClick={() => handleUpvote(report)}
+                        className="mt-6 w-full bg-blue-100 hover:bg-blue-200 text-blue-700 py-3 rounded-xl transition font-semibold"
+                    >
+                        ❤️ Support
+                    </button>
+
+                    )}
+
+                    <button
+                        onClick={() => navigate(`/complaint/${report.id}`)}
+                        className="mt-3 w-full border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white py-3 rounded-xl transition"
+                    >
+                        View Details
+                    </button>
 
                 </div>
 

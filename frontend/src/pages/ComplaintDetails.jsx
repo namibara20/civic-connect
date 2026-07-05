@@ -72,18 +72,22 @@ function ComplaintDetails() {
 };
 
     const handleComment = async () => {
-  if (!newComment.trim()) {
-    return;
-  }
+  if (!newComment.trim()) return;
+
+  console.log("Button clicked");
 
   try {
+    console.log("Before addComment");
+
     await addComment(id, newComment);
+
+    console.log("Comment added successfully");
 
     setNewComment("");
 
     fetchComments();
   } catch (error) {
-    console.log(error);
+    console.log("ADD COMMENT ERROR:", error);
   }
 };
 
