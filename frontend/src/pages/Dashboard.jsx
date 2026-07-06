@@ -122,7 +122,7 @@ function Dashboard() {
       <div className="min-h-screen bg-slate-200 py-10 px-10 max-w-7xl mx-auto">
         <div className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 rounded-3xl text-white p-10 mb-10 shadow-xl">
 
-  <h1 className="text-5xl font-extrabold mb-4">
+  <h1 className="text-3xl md:text-5xl font-extrabold mb-4 break-words">
     🏙 CivicConnect
   </h1>
 
